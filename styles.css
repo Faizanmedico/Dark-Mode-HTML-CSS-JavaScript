@@ -1,0 +1,226 @@
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4; /* Default light background */
+    color: #1D1D1F; /* Default dark text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1000px;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Business card styles */
+.card {
+    width: 450px; /* 3.5 inches at 100px per inch */
+    height: 250px; /* 2 inches at 100px per inch */
+    background-color: #fff; /* Default light card background */
+    color: #1D1D1F; /* Default dark card text */
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Front of card */
+.card-front {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #F5F5F7;
+    border-radius: 0 0 0 100%;
+    z-index: 0;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.company {
+    font-size: 14px;
+    font-weight: 400;
+    color: #86868B;
+    position: relative;
+    z-index: 1;
+}
+
+/* Back of card */
+.card-back {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.card-back::after {
+    content: '';
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #A1A1A6, #F5F5F7);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.contact-item i {
+    color: #86868B;
+    font-size: 16px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #F5F5F7; /* Light text */
+}
+
+body.dark-mode h1,
+body.dark-mode .name,
+body.dark-mode .title,
+body.dark-mode .contact-item {
+    color: #F5F5F7;
+}
+
+body.dark-mode .company,
+body.dark-mode .contact-item i {
+    color: #A1A1A6;
+}
+
+body.dark-mode .card {
+    background-color: #a2abbb; /* Dark card background */
+    color: #F5F5F7; /* Light card text */
+    box-shadow: 0 4px 24px rgba(187, 179, 179, 0.5);
+}
+
+body.dark-mode .card-front::before {
+    background-color: #dde5ee;
+}
+
+body.dark-mode .card-back::after {
+    background: linear-gradient(90deg, #555, #aaacaf);
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+        color: black; /* Force black text on print */
+    }
+
+    .container {
+        gap: 0;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .cards-container {
+        gap: 0;
+    }
+
+    .card {
+        box-shadow: none;
+        page-break-inside: avoid;
+        margin: 0;
+        border: 1px solid #E5E5E5;
+        background-color: white !important; /* Force white background on print */
+        color: black !important; /* Force black text on print */
+    }
+
+    .card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .card-front::before {
+        background-color: #c5c5e2 !important; /* Ensure light background for the corner */
+    }
+
+    .card-back::after {
+        background: linear-gradient(90deg, #A1A1A6, #F5F5F7) !important; /* Ensure light color for the line */
+    }
+}
+
+
+
+
+
